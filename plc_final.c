@@ -36,7 +36,7 @@ int main() {
 
     int i, j = 0;
 
-    //update filename to whatever needs to be read
+    //initialize filename to be read
     fp = fopen("readfile.txt", "r");
 
     //error handling for opening file
@@ -49,7 +49,7 @@ int main() {
     while((ch = fgetc(fp)) != EOF) {
         for(i = 0; i < 6; ++i) {
             if(ch == operators[i])
-                print("%c is operator\n", ch);
+                printf("%c is operator\n", ch);
         }
 
         if(isalnum(ch)) {
@@ -59,7 +59,7 @@ int main() {
         else if((ch == ' ' || ch == '\n') && (j != 0)) {
             buffer[j] = '\0';
             j = 0;
-            if(isKeyword(buffer) == 1)
+            if(keywordMatch(buffer) == 1)
                 printf("%s is keyword\n", buffer);
             else    
                 printf("%s is identifier\n", buffer);
